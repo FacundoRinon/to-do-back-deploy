@@ -10,20 +10,12 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   app.enableCors();
-  // app.use(
-  //   cors({
-  //     origin: 'http://localhost:5173',
-  //     credentials: true,
-  //   }),
-  // );
 
-  // const corsOptions = {
-  //   origin: 'http://localhost:5173', // El dominio permitido para las solicitudes CORS
-  //   methods: ['GET', 'POST'], // Métodos HTTP permitidos
-  // allowedHeaders: ['Content-Type'],
-  // };
-
-  // app.use(cors(corsOptions));
+  app.enableCors({
+    origin: 'http://localhost:5173', // Reemplaza esto con tu URL de desarrollo
+    methods: ['GET', 'POST'], // Métodos HTTP permitidos
+    allowedHeaders: ['Content-Type'], // Encabezados permitidos
+  });
 
   app.useGlobalPipes(new ValidationPipe());
 

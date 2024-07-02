@@ -1,24 +1,13 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "server.js", "use": "@vercel/node" },
-    { "src": "/public/**/*", "use": "@vercel/static" }
-  ],
   "routes": [
     {
-      "version": 2,
-      "routes": [
-        {
-          "src": "/users/login",
-          "methods": ["GET", "POST"],
-          "dest": "api/login.js",
-          "headers": {
-            "Access-Control-Allow-Origin": "http://localhost:5173",
-            "Access-Control-Allow-Methods": "GET, POST",
-            "Access-Control-Allow-Headers": "Content-Type"
-          }
-        }
-      ]
+      "src": "/api/(.*)",
+      "dest": "api/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "index.ts"
     }
   ]
 }

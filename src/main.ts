@@ -9,7 +9,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   // Configuración global de CORS para permitir todas las solicitudes
-  app.enableCors();
+  // app.enableCors();
 
   // Opcional: Configuración específica para un origen y métodos específicos
   app.enableCors({

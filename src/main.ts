@@ -8,12 +8,13 @@ async function bootstrap() {
   dotenv.config();
   const app = await NestFactory.create(AppModule);
 
-  app.use(
-    cors({
-      origin: 'http://localhost:5173',
-      credentials: true,
-    }),
-  );
+  const corsOptions = {
+    origin: 'http://localhost:5173', // El dominio permitido para las solicitudes CORS
+    methods: ['GET', 'POST'], // Métodos HTTP permitidos
+    allowedHeaders: ['Content-Type'], // Encabezados personalizados permitidos
+  };
+
+  app.use(cors(corsOptions));
 
   await app.listen(3000);
 }
